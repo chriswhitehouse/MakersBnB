@@ -34,6 +34,7 @@ I would like to be able to offer a range of availible dates
 So that i can rent an owners space
 I would like to be able to request an owners space for one night
 ```
+```
 7. As a owner
 So i can approve a booking
 I would like to be able to approve bookings on my space
