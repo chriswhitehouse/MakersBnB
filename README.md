@@ -69,3 +69,9 @@ It should not allow me to book a date that has already been booked
 Untill i confirm a booking
 It should still be available
 ```
+
+### Diagramming
+
+![Class Diagram](https://github.com/ZeenLamDev/MakersBnB/blob/master/diagrams/class.svg)
+![Entity](https://github.com/ZeenLamDev/MakersBnB/blob/master/diagrams/entity.svg)
+![Sequence](https://github.com/ZeenLamDev/MakersBnB/blob/master/diagrams/sequence.svg)

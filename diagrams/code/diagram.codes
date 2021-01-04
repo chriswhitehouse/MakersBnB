@@ -1,0 +1,94 @@
+#### Class Definitions\
+Class "User" as user:
+"id"
+"email"
+"password"
+"#new()"
+".create()"
+".find()"
+".authenticate()"
+
+CLASS "Space" as space:
+"id"
+"name"
+"description"
+"price per night"
+"available date from"
+"available date to"
+"owner_id"
+"#new()"
+".create()"
+".all()"
+".find()??"
+".where()??"
+
+CLASS "Bookings" as booking:
+"id"
+"space_id"
+"user_id"
+"date"
+"status"
+
+CLASS "DatabaseConnection" as db:
+".setup()"
+".query()"
+
+#### Table definitions
+TABLE "spaces" as spaces:
+PK"id"
+FK"user_id"
+"name"
+"description"
+"price per night"
+"date available from"
+"date available to"
+
+TABLE "users" as users:
+PK"id"
+"email"
+"password"
+
+users - spaces: (One,Many)["1","*"]
+
+TABLE "bookings" as bookings:
+PK"id"
+FK"user_id"
+FK"space_id"
+"date"
+"status"
+
+
+users - bookings: (One,Many)["*","*"]
+spaces - bookings: (One,Many)["*","1"]
+
+
+### Sequence Diagram
+
+alias client="Client"
+alias controller="Controller (app.rb)"
+alias model="Model (user.rb)"
+alias views="Views"
+alias db="Database (makersbnb)"
+
+#### Render Sign up form
+client->controller: "get '/' request"
+controller->views: "erb :'/users/new'"
+views->controller: "new.erb"
+controller->client: "new.html response (with sign up form)"
+
+#### Record User Sign Up Data
+client->controller: "post '/users' request"
+controller->model: ".create"
+model->db: "INSERT INTO users tables"
+db->model: "RETURN user"
+model->controller: "session[:user_id] = @user.id"
+
+#### Redirect to Spaces list
+controller->controller: "Redirect get '/spaces'"
+controller->views: "erb :'/spaces/index'"
+views->controller: "spaces/index.erb"
+controller->model: ".all"
+model->db: "SELECT * FROM spaces tables"
+db->model: "RETURN spaces"
+model->controller: "@spcaes"
+controller->client: "index.html response"
