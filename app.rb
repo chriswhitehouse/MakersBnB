@@ -1,19 +1,20 @@
 require "sinatra/flash"
 require "sinatra/base"
 require "./database_connection_setup"
-require "./lib/space"
+require 'bcrypt'
+
 
 class MakersBnB < Sinatra::Base
   get "/" do
-    "Hello MakersBnB!"
-  end
-
-  get '/spaces' do
-    "Hello Spaces"
+    redirect('users/new')
   end
 
   get '/spaces/new' do
     erb :'spaces/new'
+  end
+
+  get "/spaces" do
+    erb :'spaces/index'
   end
 
   post "/spaces" do
@@ -21,7 +22,14 @@ class MakersBnB < Sinatra::Base
     redirect('/spaces')
   end
 
+  get "/users/new" do
+    erb :'users/new'
+  end
 
+  post "/users" do
+    User.create(email: params[:email],password: params[:password])
+    redirect('/spaces')
+  end
   # start the server if ruby file executed directly
   run! if app_file == $0
 end
