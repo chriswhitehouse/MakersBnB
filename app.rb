@@ -16,7 +16,7 @@ class MakersBnB < Sinatra::Base
   end
 
   post "/spaces" do
-    "Hello"
+    p "Hello"
     redirect('/spaces')
   end
 
