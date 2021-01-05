@@ -2,6 +2,10 @@
 
 MakersBnB is a webapp that allows users to list spaces they have available and to hire spaces for the night.
 
+## Build Status
+
+[![Build Status](https://travis-ci.com/ZeenLamDev/MakersBnB.svg?branch=master)](https://travis-ci.com/ZeenLamDev/MakersBnB)
+
 ## Code style
 [![Ruby Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://github.com/testdouble/standard)
 
@@ -85,4 +89,4 @@ It should still be available
 2. Create a development database using the psql command `CREATE DATABASE makersbnb;`
 3. Run '01_create_users_table.sql'
 4. Run '02_create_spaces_table.sql'
-5. Complete above steps for `CREATE DATABASE makersbnb_test;` 
+5. Complete above steps for `CREATE DATABASE makersbnb_test;`
