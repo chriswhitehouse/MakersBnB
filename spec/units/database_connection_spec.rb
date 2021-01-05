@@ -5,8 +5,8 @@ describe DatabaseConnection do
     end
 
     it "should establish a connection with a given database" do
-      expect(PG).to receive(:connect).with(dbname: "chitter_test")
-      described_class.setup("chitter_test")
+      expect(PG).to receive(:connect).with(dbname: "makersbnb_test")
+      described_class.setup("makersbnb_test")
     end
   end
 
@@ -16,10 +16,10 @@ describe DatabaseConnection do
     end
 
     it "should execute the query string" do
-      connection = described_class.setup("chitter_test")
-      expect(connection).to receive(:exec).with("SELECT * FROM peeps")
+      connection = described_class.setup("makersbnb_test")
+      expect(connection).to receive(:exec).with("SELECT * FROM spaces")
 
-      described_class.query("SELECT * FROM peeps")
+      described_class.query("SELECT * FROM spaces")
     end
   end
 end
