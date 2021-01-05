@@ -70,7 +70,7 @@ It should not allow me to book a date that has already been booked
 ```
 13. As a owner
 Untill i confirm a booking
-It should still be available
+It should still be available 
 ```
 
 ### Diagramming
