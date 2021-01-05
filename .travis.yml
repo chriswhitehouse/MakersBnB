@@ -9,6 +9,8 @@ services:
 
 before_script:
   - psql -c 'CREATE DATABASE makersbnb_test;' -U postgres
-   
+  - psql  -U postgres makersbnb_test < db/migrations/01_create_users_table.sql
+  - psql  -U postgres makersbnb_test < db/migrations/02_create_spaces_table.sql
+
 script:
   - bundle exec rspec
