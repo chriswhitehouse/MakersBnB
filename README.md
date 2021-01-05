@@ -83,4 +83,6 @@ It should still be available
 
 1. Connect to psql
 2. Create a development database using the psql command `CREATE DATABASE makersbnb;`
-3. Create a development database using the psql command `CREATE DATABASE makersbnb_test;`
+3. Run '01_create_users_table.sql'
+4. Run '02_create_spaces_table.sql'
+5. Complete above steps for `CREATE DATABASE makersbnb_test;` 
