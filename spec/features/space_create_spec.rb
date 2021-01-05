@@ -4,9 +4,9 @@ feature 'signed in user can create a new listing' do
     visit('/spaces/new')
     fill_in('name', with: 'Beautiful test space')
     fill_in('description', with: 'This is a test description')
-    fill_in('available_from', with: 01/01/2021)
-    fill_in('available_to', with: 01/01/2021)
-    fill_in('Price', with: 50)
+    fill_in('date_available_from', with: "2021-01-01")
+    fill_in('date_available_to', with: "2021-01-02")
+    fill_in('price', with: "50")
 
     click_button('confirm')
 
@@ -15,3 +15,4 @@ feature 'signed in user can create a new listing' do
     expect(page).not_to have_selector("input", :class => "confirm")
   end
 end
+

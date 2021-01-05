@@ -9,11 +9,12 @@
 <h1>List A Space</h1>
 <form action="/spaces" method="post">
   <label>Name</label>
-  <input type="text" value="name">
-  <input type="text" value="description">
-  <input type="date" value="from">
-  <input type="date" value="to">
-  <input type="submit" value="Confirm" class="confirm">
+  <input type="text" name="name" class="name"/>
+  <input type="text" name="description" class="description"/>
+  <input type="text" name="price" class="price"/>
+  <input type="date" name="date_available_from" class="from"/>
+  <input type="date" name="date_available_to" class="to"/>
+  <input type="submit" name="confirm" class="confirm"/>
 </form>
 </body>
 </html>
