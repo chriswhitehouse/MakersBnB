@@ -1,4 +1,3 @@
-require 'pg'
 require_relative '../lib/database_connection'
 
 def persisted_data_retrieve(table:, id:)

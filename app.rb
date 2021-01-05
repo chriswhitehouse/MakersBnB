@@ -13,7 +13,7 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/spaces/new' do
-    erb :space_add
+    erb :'spaces/new'
   end
 
   post "/spaces" do

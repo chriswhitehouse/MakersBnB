@@ -8,11 +8,10 @@ feature 'signed in user can create a new listing' do
     fill_in('date_available_to', with: "2021-01-02")
     fill_in('price', with: "50")
 
-    click_button('confirm')
+    click_button('Confirm')
 
     expect(current_path).to eq '/spaces'
     expect(current_path).not_to eq '/spaces/new'
     expect(page).not_to have_selector("input", :class => "confirm")
   end
 end
-
