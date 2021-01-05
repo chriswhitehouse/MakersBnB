@@ -7,6 +7,20 @@ class MakersBnB < Sinatra::Base
     "Hello MakersBnB!"
   end
 
+  get '/spaces' do
+    "Hello Spaces"
+  end
+
+  get '/spaces/new' do
+    erb :space_add
+  end
+
+  post "/spaces" do
+    "Hello"
+    redirect('/spaces')
+  end
+
+
   # start the server if ruby file executed directly
   run! if app_file == $0
 end
