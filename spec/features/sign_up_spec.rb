@@ -7,6 +7,6 @@ feature "Signing up to website" do
     click_button('Sign up')
 
     expect(current_path).to eq ('/spaces')
-    expect(page).to have_content 'Book a space'
+    expect(page).to have_content 'Book A Space'
   end
 end
