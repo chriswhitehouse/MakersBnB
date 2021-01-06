@@ -1,5 +1,7 @@
 class Space
 
+  attr_reader :id, :name, :description, :price, :date_available_from, :date_available_to
+
   def self.all
     result = DatabaseConnection.query("SELECT * FROM spaces;")
     result.map do |space|
@@ -23,8 +25,6 @@ class Space
       date_available_to: result[0]['date_available_to'],
       price: result[0]['price'])
   end
-  
-  attr_reader :id, :name, :description, :price, :date_available_from, :date_available_to
 
   def initialize(id:, name:, description:, price:, date_available_from:, date_available_to:)
     @id = id

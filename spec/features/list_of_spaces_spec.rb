@@ -19,8 +19,8 @@ feature "So i can choose a space" do
     expect(page).to have_selector("input", :class => "list_a_space")
     expect(page).not_to have_content('sinatra')
     expect(page).to have_content('Book A Space')
-    # expect(page).to have_content("Test name") ``
-    # expect(page).to have_content("Another description")
-    # expect(page).to have_content("Another name")
+    expect(page).to have_content("Test name")
+    expect(page).to have_content("Another description")
+    expect(page).to have_content("Another name")
   end
 end
