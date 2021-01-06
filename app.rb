@@ -17,6 +17,11 @@ class MakersBnB < Sinatra::Base
     erb :'spaces/new'
   end
 
+  get '/spaces/filter' do
+    @spaces = Space.filter(from: params[:available_from], to: params[:available_to])
+    erb :'spaces/index'
+  end
+
   get "/spaces" do
     @spaces = Space.all
     erb :'spaces/index'
