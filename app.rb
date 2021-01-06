@@ -8,6 +8,7 @@ require_relative './lib/space'
 class MakersBnB < Sinatra::Base
   enable :sessions
 
+
   get "/" do
     redirect('users/new')
   end
@@ -17,7 +18,6 @@ class MakersBnB < Sinatra::Base
   end
 
   get "/spaces" do
-    # @user = User.find(id: session[:user_id])
     @spaces = Space.all
     erb :'spaces/index'
   end
@@ -37,6 +37,7 @@ class MakersBnB < Sinatra::Base
     session[:user_id] = user.id
     redirect('/spaces')
   end
+  
   # start the server if ruby file executed directly
   run! if app_file == $0
 end

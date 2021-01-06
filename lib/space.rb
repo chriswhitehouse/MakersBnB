@@ -4,6 +4,7 @@ class Space
 
   attr_reader :id, :name, :description, :price, :date_available_from, :date_available_to, :user_id
 
+
   def self.all
     result = DatabaseConnection.query("SELECT * FROM spaces;")
     result.map do |space|
@@ -20,6 +21,7 @@ class Space
 
   def self.create(name:, description:, price:, date_available_from:, date_available_to:, user_id:)
     result = DatabaseConnection.query("INSERT INTO spaces (name, description, price, date_available_from, date_available_to, user_id ) VALUES('#{name}', '#{description}', '#{price}', '#{date_available_from}', '#{date_available_to}','#{user_id}') RETURNING id, name, description, price, date_available_from, date_available_to, user_id")
+
     Space.new(
       id: result[0]['id'],
       name: result[0]['name'],
@@ -39,5 +41,4 @@ class Space
     @date_available_to = date_available_to
     @user_id = user_id
   end
-
 end
