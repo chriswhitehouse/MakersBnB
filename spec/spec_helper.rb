@@ -4,6 +4,7 @@ ENV["RACK_ENV"] = "test"
 
 require_relative "./setup_test_database"
 require_relative "./database_helpers"
+require_relative './features/web_helpers' 
 
 require File.join(File.dirname(__FILE__), "..", "app.rb")
 
@@ -45,7 +46,7 @@ RSpec.configure do |config|
   config.before(:each) do
     setup_test_database
   end
-  
+
   config.include Capybara::DSL
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest

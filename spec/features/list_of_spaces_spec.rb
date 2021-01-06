@@ -1,11 +1,13 @@
 feature "So i can choose a space" do
   scenario "I would like to see a list of spaces" do
+    user = User.create(email: 'test@example.com', password: 'test')
     Space.create(
       name: "Test name",
       description: "Test description",
       date_available_from: "2021-01-01",
       date_available_to: "2021-01-02",
-      price: "50"
+      price: "50",
+      user_id: user.id
       )
 
     Space.create(
@@ -13,7 +15,8 @@ feature "So i can choose a space" do
       description: "Another description",
       date_available_from: "2021-01-11",
       date_available_to: "2021-02-12",
-      price: "50")
+      price: "50",
+      user_id: user.id)
 
     visit('/spaces')
     expect(page).to have_selector("input", :class => "list_a_space")
