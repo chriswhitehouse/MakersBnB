@@ -2,9 +2,11 @@ require "sinatra/flash"
 require "sinatra/base"
 require "./database_connection_setup"
 require 'bcrypt'
+require_relative './lib/space'
 
 
 class MakersBnB < Sinatra::Base
+
   get "/" do
     redirect('users/new')
   end
@@ -14,6 +16,7 @@ class MakersBnB < Sinatra::Base
   end
 
   get "/spaces" do
+    @spaces = Space.all
     erb :'spaces/index'
   end
 

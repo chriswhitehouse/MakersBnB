@@ -1,1 +1,24 @@
-<h1>Book a space</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book A Space</title>
+</head>
+<body>
+<h1>Book A Space</h1>
+<form action="/spaces/new" method="get">
+  <input type="submit" name="list a space" class="list_a_space" value="List a Space"/>
+</form>
+<div>
+  <ul class="indiv_space">
+     <% @spaces.each do |space| %>
+       <%= space.name %><br>
+       <%= space.description %>
+       Date available: <%= space.date_available_from %> until: <%= space.date_available_to %><br>
+       <br>
+     <% end %>
+  </ul>
+</div>
+</body>
+</html>

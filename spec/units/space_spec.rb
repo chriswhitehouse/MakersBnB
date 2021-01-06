@@ -31,4 +31,38 @@ describe Space do
     end
   end
 
+  describe '.all' do
+    it 'returns all listed spaces' do
+      space = Space.create(
+        name: "Test Name",
+        description: "Test description",
+        date_available_from: "2021-01-01",
+        date_available_to: "2021-01-02",
+        price: "50"
+        )
+      Space.create(
+        name: "Lovely space",
+        description: "Lovely description",
+        date_available_from: "2021-03-03",
+        date_available_to: "2021-01-04",
+        price: "70")
+      Space.create(
+        name: "Delightful name",
+        description: "Delightful description",
+        date_available_from: "2021-01-14",
+        date_available_to: "2021-01-15",
+        price: "55")
+
+      spaces = Space.all
+
+      expect(spaces.length).to eq(3)
+      expect(spaces.first).to be_a(Space)
+      expect(spaces.first.id).to eq(space.id)
+      expect(spaces.first.name).to eq('Test Name')
+      expect(spaces.first.description).to eq('Test description')
+      expect(spaces.first.price).to eq('50')
+
+    end
+  end
+
 end
