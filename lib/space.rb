@@ -41,7 +41,8 @@ class Space
         description: space['description'],
         date_available_from: space['date_available_from'],
         date_available_to: space['date_available_to'],
-        price: space['price'])
+        price: space['price'],
+        user_id: space['user_id'])
       end
   end
 
