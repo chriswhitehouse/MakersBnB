@@ -7,6 +7,15 @@
 </head>
 <body>
 <h1>Book A Space</h1>
+  <div class="welcome_user"
+  <% if @user %>
+  <h3>Welcome, <%= @user.email %></h3>
+  <form action="/sessions/destroy" method="post">
+    <input class="sign_out" type="submit" value="Sign out" />
+  </form>
+  <% end %>
+  </div>
+
 <form action="/spaces/new" method="get">
   <input type="submit" name="list a space" class="list_a_space" value="List a Space"/>
 </form>
