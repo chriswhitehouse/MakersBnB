@@ -26,6 +26,19 @@ class Space
       price: result[0]['price'])
   end
 
+  def self.filter(from:, to:)
+    result = DatabaseConnection.query("SELECT * FROM spaces WHERE date_available_from <= cast('#{to}' as date) and date_available_to >= cast('#{from}' as date);")
+    result.map do |space|
+      Space.new(
+        id: space['id'],
+        name: space['name'],
+        description: space['description'],
+        date_available_from: space['date_available_from'],
+        date_available_to: space['date_available_to'],
+        price: space['price'])
+      end
+  end
+
   def initialize(id:, name:, description:, price:, date_available_from:, date_available_to:)
     @id = id
     @name = name

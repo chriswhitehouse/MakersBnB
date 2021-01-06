@@ -70,7 +70,7 @@ describe Space do
       Space.create(
         name: "Test name",
         description: "Test description",
-        date_available_from: "2021-02-02",
+        date_available_from: "2021-02-01",
         date_available_to: "2021-02-20",
         price: "50"
         )
@@ -86,7 +86,7 @@ describe Space do
       result = described_class.filter(from: "2021-02-01", to: "2021-02-01")
 
       expect(result.length).to eq 1
-      expect(result.first.name).to eq "Test Name"
+      expect(result.first.name).to eq "Test name"
     end
   end
 
