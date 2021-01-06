@@ -10,6 +10,15 @@
 <form action="/spaces/new" method="get">
   <input type="submit" name="list a space" class="list_a_space" value="List a Space"/>
 </form>
+
+<form action="/spaces" method="get">
+  <label for="available_from">Available from (DD/MM/YYYY)</label>
+  <input type="date" name="available_from"/>
+  <label for="available_to">Available to (DD/MM/YYYY)</label>
+  <input type="date" name="available_to"/>
+  <input type="submit" class="show_listings" value="Show listings"
+</form>
+
 <div>
   <ul class="indiv_space">
      <% @spaces.each do |space| %>

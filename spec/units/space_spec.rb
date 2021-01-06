@@ -65,4 +65,29 @@ describe Space do
     end
   end
 
+  describe ".filter" do
+    it "should only list spaces available within required date range" do
+      Space.create(
+        name: "Test name",
+        description: "Test description",
+        date_available_from: "2021-02-02",
+        date_available_to: "2021-02-20",
+        price: "50"
+        )
+
+      Space.create(
+        name: "Another name",
+        description: "Another Test description",
+        date_available_from: "2021-03-09",
+        date_available_to: "2021-03-29",
+        price: "50"
+        )
+
+      result = described_class.filter(from: "2021-02-01", to: "2021-02-01")
+
+      expect(result.length).to eq 1
+      expect(result.first.name).to eq "Test Name"
+    end
+  end
+
 end
