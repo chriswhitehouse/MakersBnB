@@ -42,6 +42,11 @@ class MakersBnB < Sinatra::Base
     session[:user_id] = user.id
     redirect('/spaces')
   end
+
+  get "/spaces/:id" do
+    @space = Space.find(id: params[:id])
+    erb :'spaces/request'
+  end
   
   # start the server if ruby file executed directly
   run! if app_file == $0
