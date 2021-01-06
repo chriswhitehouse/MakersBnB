@@ -5,12 +5,14 @@ describe Space do
 
   describe '.create' do
     it 'creates a new space' do
+      user = User.create(email: 'test@example.com', password: 'test')
       space = Space.create(
         name: "Test name",
         description: "Test description",
         date_available_from: "2021-01-01",
         date_available_to: "2021-01-02",
-        price: "50"
+        price: "50",
+        user_id: user.id
         )
 
       Space.create(
@@ -18,7 +20,8 @@ describe Space do
         description: "Another description",
         date_available_from: "2021-01-11",
         date_available_to: "2021-02-12",
-        price: "50")
+        price: "50",
+        user_id: user.id)
 
       persisted_data = persisted_data_retrieve(table: 'spaces', id: space.id)
 
@@ -33,25 +36,31 @@ describe Space do
 
   describe '.all' do
     it 'returns all listed spaces' do
+      user = User.create(email: 'test@example.com', password: 'test')
+
       space = Space.create(
         name: "Test Name",
         description: "Test description",
         date_available_from: "2021-01-01",
         date_available_to: "2021-01-02",
-        price: "50"
-        )
+        price: "50",
+        user_id: user.id)
+      
       Space.create(
         name: "Lovely space",
         description: "Lovely description",
         date_available_from: "2021-03-03",
         date_available_to: "2021-01-04",
-        price: "70")
+        price: "70",
+        user_id: user.id)
+
       Space.create(
         name: "Delightful name",
         description: "Delightful description",
         date_available_from: "2021-01-14",
         date_available_to: "2021-01-15",
-        price: "55")
+        price: "55",
+        user_id: user.id)
 
       spaces = Space.all
 
@@ -64,5 +73,4 @@ describe Space do
 
     end
   end
-
 end
