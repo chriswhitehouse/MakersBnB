@@ -56,6 +56,13 @@ class MakersBnB < Sinatra::Base
     redirect('/spaces')
   end
 
+  get "/requests/:id" do
+    @rqst = Request.find(id: params[:id])
+    @space = Space.find(id: @rqst.space_id)
+    @user = User.find(id: @rqst.user_id)
+    erb :'requests/approve'
+  end
+
   get '/sessions/new' do
     erb :'sessions/new'
   end

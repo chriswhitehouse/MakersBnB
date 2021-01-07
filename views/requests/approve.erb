@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request Approval</title>
+</head>
+<body>
+  <h1>Request for '<%=@space.name%>'</h1>
+  <br>
+  <h3>From: <%=@user.email%></h3>
+  <h3>Date: <%=@rqst.date%></h3>
+
+
+  <form action='/requests/<%= @rqst.id %>' method='post'>
+    <input type="hidden" name="_method" value="PATCH"/>
+    <input type="hidden" name="approval" value="confirmed"/>
+    <input type="submit" value='Confirm request from <%=@user.email%>'/>
+  </form>
+
+  <form action='/requests/<%= @rqst.id %>' method='post'>
+    <input type="hidden" name="_method" value="PATCH"/>
+    <input type="hidden" name="approval" value="denied"/>
+    <input type="submit" value='Deny request from <%=@user.email%>'/>
+  </form>
+</body>
+</html>
