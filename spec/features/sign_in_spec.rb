@@ -7,8 +7,8 @@ feature "As a user, so I can make changes to my bookings/listings, I would like 
     expect(current_path).to eq '/sessions/new'
 
     fill_in('email', with: 'test@example.com')
-    fill_in('password', with: 'fakepassword123')
+    fill_in('password', with: 'test')
     click_button('Confirm')
-    expect(current_path).to eq '/sessions'
+    expect(current_path).to eq '/spaces'
   end
 end
