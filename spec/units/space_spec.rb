@@ -6,6 +6,7 @@ describe Space do
   describe '.create' do
     it 'creates a new space' do
       user = User.create(email: 'test@example.com', password: 'test')
+
       space = Space.create(
         name: "Test name",
         description: "Test description",
@@ -45,7 +46,7 @@ describe Space do
         date_available_to: "2021-01-02",
         price: "50",
         user_id: user.id)
-      
+
       Space.create(
         name: "Lovely space",
         description: "Lovely description",
@@ -97,6 +98,28 @@ describe Space do
 
       expect(result.length).to eq 1
       expect(result.first.name).to eq "Test name"
+    end
+  end
+
+  describe '.find' do
+    it 'returns the space' do
+
+      user = User.create(email: 'test@example.com', password: 'test')
+
+      space = Space.create(name: "Test name",
+        description: "Test description",
+        date_available_from: "2021-01-01",
+        date_available_to: "2021-01-02",
+        price: "50",
+        user_id: user.id)
+
+      result = Space.find(id: space.id)
+      expect(result.id).to eq space.id
+      expect(result.name).to eq space.name
+    end
+
+    it 'returns nil if no ID given' do
+      expect(Space.find(id: nil)).to eq nil
     end
   end
 

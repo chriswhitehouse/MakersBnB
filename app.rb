@@ -46,6 +46,16 @@ class MakersBnB < Sinatra::Base
     redirect('/spaces')
   end
 
+  get "/spaces/:id" do
+    @space = Space.find(id: params[:id])
+    erb :'requests/new'
+  end
+
+  post "/requests/:id" do
+    Request.create(user_id: session[:user_id], requested_date: params[:requested_date], space_id: params[:id])
+    redirect('/spaces')
+  end
+
   get '/sessions/new' do
     erb :'sessions/new'
   end
