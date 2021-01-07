@@ -25,16 +25,21 @@
   <input type="date" name="available_from"/>
   <label for="available_to">Available to (DD/MM/YYYY)</label>
   <input type="date" name="available_to"/>
-  <input type="submit" class="show_listings" value="Show listings"
+  <input type="submit" class="show_listings" value="Show listings"/>
 </form>
 
 <div>
-  <ul class="indiv_space">
+  <ul class="indiv_space">>
      <% @spaces.each do |space| %>
+     <li class="space" id='space-<%=space.id %>'>
        <%= space.name %><br>
        <%= space.description %>
        Date available: <%= space.date_available_from %> until: <%= space.date_available_to %><br>
        <br>
+       <form action="/spaces/<%= space.id %>" method="get">
+        <input type="submit" value="More details">
+      </form>
+       </li>
      <% end %>
   </ul>
 </div>

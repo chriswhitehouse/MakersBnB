@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request</title>
+</head>
+<body>
+  <h1><%=@space.name%></h1>
+  <form action='/bookings/<%= @space.id %>' method='post'>
+  <input type="date" min="<%= @space.date_available_from %>" max="<%= @space.date_available_to %>" name="date">
+  <input type="sumbit" value='Make a request'>
+  </form>
+</body>
+</html>
