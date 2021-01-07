@@ -45,7 +45,7 @@ describe Request do
         date_available_from: "2021-03-03",
         date_available_to: "2021-01-04",
         price: "70",
-        user_id: requester.id)
+        user_id: owner.id)
 
       Space.create(
         name: "Another Lovely space",
@@ -59,7 +59,7 @@ describe Request do
 
       persisted_data = persisted_data_retrieve(table: 'requests', id: request.id)
 
-      requests = Request.all_made
+      requests = Request.all_made(user_id: requester.id)
 
       expect(requests.length).to eq(2)
       expect(requests.first).to be_a(Request)

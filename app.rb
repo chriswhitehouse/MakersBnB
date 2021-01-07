@@ -3,6 +3,7 @@ require "sinatra/base"
 require "./database_connection_setup"
 require 'bcrypt'
 require_relative './lib/space'
+require_relative './lib/request'
 require_relative './session_helper'
 
 
@@ -57,8 +58,7 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/requests' do
-    @request = Request.all_made
-
+    @requests_made = Request.all_made(user_id: session[:user_id])
     erb :'requests/index'
   end
 
