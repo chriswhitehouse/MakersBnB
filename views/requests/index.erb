@@ -9,19 +9,23 @@
   <div class='request-container'>
     <h3>Requests i've made</h3>
     <ul>
+      <% @requests_made.each do |request| %>
+      <li class="request_made" id="request-<%=request.id %>">
+        <%= request.requested_date %><br>
+        <%= request.status %><br>
       <li>
       Space 2
       </li>
       <li>
       Space 1
       </li>
+      <% end %>
     </ul>
   </div>
   <div class='received-container'>
     <h3>Requests i've received</h3>
     <ul>
       <li>
-      <%= @space %>
       </li>
       <li>
       Space 1
