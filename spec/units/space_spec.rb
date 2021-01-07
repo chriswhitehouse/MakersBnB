@@ -6,6 +6,7 @@ describe Space do
   describe '.create' do
     it 'creates a new space' do
       user = User.create(email: 'test@example.com', password: 'test')
+
       space = Space.create(
         name: "Test name",
         description: "Test description",
@@ -45,7 +46,7 @@ describe Space do
         date_available_to: "2021-01-02",
         price: "50",
         user_id: user.id)
-      
+
       Space.create(
         name: "Lovely space",
         description: "Lovely description",
