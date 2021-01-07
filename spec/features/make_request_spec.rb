@@ -17,6 +17,7 @@ feature 'As a user So that i can rent an owners space I would like to be able to
 
     expect(current_path).to eq "/spaces/#{space.id}"
     expect(page).to have_content("Lovely space")
+    fill_in('requested_date', with: "2021-01-01")
     click_button('Make a request')
     expect(current_path).to eq "/spaces"
 
