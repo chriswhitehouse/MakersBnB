@@ -4,7 +4,7 @@ feature 'authentication' do
 
     visit('/')
     click_button('Sign in')
-    visit('/sessions/new')
+    expect(current_path).to eq '/sessions/new'
     fill_in(:email, with: 'nottherightemail@me.com')
     fill_in(:password, with: 'password123')
     click_button('Confirm')
@@ -18,7 +18,7 @@ feature 'authentication' do
 
     visit('/')
     click_button('Sign in')
-    visit('/sessions/new')
+    expect(current_path).to eq '/sessions/new'
     fill_in(:email, with: 'test@example.com')
     fill_in(:password, with: 'notthecorrectpassword123')
     click_button('Confirm')
