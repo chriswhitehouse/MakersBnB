@@ -100,4 +100,26 @@ describe Space do
     end
   end
 
+  describe '.find' do
+    it 'returns the space' do
+
+      user = User.create(email: 'test@example.com', password: 'test')
+
+      space = Space.create(name: "Test name",
+        description: "Test description",
+        date_available_from: "2021-01-01",
+        date_available_to: "2021-01-02",
+        price: "50",
+        user_id: user.id)
+
+      result = Space.find(id: space.id)
+      expect(result.id).to eq space.id
+      expect(result.name).to eq space.name
+    end
+
+    it 'returns nil if no ID given' do
+      expect(Space.find(id: nil)).to eq nil
+    end
+  end
+
 end
