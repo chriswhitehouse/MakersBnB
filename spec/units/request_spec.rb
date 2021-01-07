@@ -27,7 +27,7 @@ describe Request do
   end
 
   describe '.all_made' do
-    it 'should show all requests received' do
+    it 'should show all requests made' do
       owner = User.create(email: 'test@example.com', password: 'test')
       requester = User.create(email: 'test1@example.com', password: 'test1')
 
@@ -55,16 +55,16 @@ describe Request do
         price: "170",
         user_id: requester.id)
 
-      request = Request.create(user_id: requester.id, requested_date: '2021-03-03', space_id: space.id)
+      request1 = Request.create(user_id: requester.id, requested_date: '2021-01-01', space_id: space.id)
+      request2 = Request.create(user_id: requester.id, requested_date: '2021-03-03', space_id: space.id)
 
-      persisted_data = persisted_data_retrieve(table: 'requests', id: request.id)
+      persisted_data = persisted_data_retrieve(table: 'requests', id: request1.id)
 
       requests = Request.all_made(user_id: requester.id)
 
       expect(requests.length).to eq(2)
       expect(requests.first).to be_a(Request)
-      expect(requests.first.id).to eq(request.id)
-      expect(request.requested_date).to eq('2021-03-03')
+      expect(request1.requested_date).to eq('2021-01-01')
     end
   end
 

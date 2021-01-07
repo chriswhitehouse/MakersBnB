@@ -15,12 +15,12 @@ class Space
         date_available_from: space['date_available_from'],
         date_available_to: space['date_available_to'],
         price: space['price'],
-        user_id: space['user_id'])
+        user_id: space['owner_id'])
     end
   end
 
   def self.create(name:, description:, price:, date_available_from:, date_available_to:, user_id:)
-    result = DatabaseConnection.query("INSERT INTO spaces (name, description, price, date_available_from, date_available_to, user_id ) VALUES('#{name}', '#{description}', '#{price}', '#{date_available_from}', '#{date_available_to}','#{user_id}') RETURNING id, name, description, price, date_available_from, date_available_to, user_id")
+    result = DatabaseConnection.query("INSERT INTO spaces (name, description, price, date_available_from, date_available_to, owner_id ) VALUES('#{name}', '#{description}', '#{price}', '#{date_available_from}', '#{date_available_to}','#{user_id}') RETURNING id, name, description, price, date_available_from, date_available_to, owner_id")
 
     Space.new(
       id: result[0]['id'],
@@ -29,7 +29,7 @@ class Space
       date_available_from: result[0]['date_available_from'],
       date_available_to: result[0]['date_available_to'],
       price: result[0]['price'],
-      user_id: result[0]['user_id'])
+      user_id: result[0]['owner_id'])
   end
 
   def self.filter(from:, to:)
@@ -42,7 +42,7 @@ class Space
         date_available_from: space['date_available_from'],
         date_available_to: space['date_available_to'],
         price: space['price'],
-        user_id: space['user_id'])
+        user_id: space['owner_id'])
       end
   end
 
@@ -57,8 +57,23 @@ class Space
       date_available_from: result['date_available_from'],
       date_available_to: result['date_available_to'],
       price: result['price'],
-      user_id: result['user_id'])
+      user_id: result['owner_id'])
 
+  end
+
+  # needs test 
+  def self.where(id:)
+    result = DatabaseConnection.query("SELECT * FROM spaces WHERE id = #{id};")
+    result.map do |space|
+      Space.new(
+        id: space['id'],
+        name: space['name'],
+        description: space['description'],
+        date_available_from: space['date_available_from'],
+        date_available_to: space['date_available_to'],
+        price: space['price'],
+        user_id: space['owner_id'])
+      end
   end
 
   def initialize(id:, name:, description:, price:, date_available_from:, date_available_to:, user_id:)
