@@ -46,6 +46,20 @@ class Space
       end
   end
 
+  def self.find(id:)
+    return nil unless id
+    result = DatabaseConnection.query("SELECT * FROM spaces WHERE id = #{id}").first
+
+    Space.new(
+      id: result['id'],
+      name: result['name'],
+      description: result['description'],
+      date_available_from: result['date_available_from'],
+      date_available_to: result['date_available_to'],
+      price: result['price'],
+      user_id: result['user_id'])
+
+  end
 
   def initialize(id:, name:, description:, price:, date_available_from:, date_available_to:, user_id:)
     @id = id
