@@ -56,6 +56,12 @@ class MakersBnB < Sinatra::Base
     redirect('/spaces')
   end
 
+  get '/requests' do
+    @request = Request.all_made
+
+    erb :'requests/index'
+  end
+
   get '/sessions/new' do
     erb :'sessions/new'
   end

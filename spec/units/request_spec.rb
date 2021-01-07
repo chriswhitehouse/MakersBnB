@@ -25,4 +25,47 @@ describe Request do
       expect(request.status).to eq('requested')
     end
   end
+
+  describe '.all_made' do
+    it 'should show all requests received' do
+      owner = User.create(email: 'test@example.com', password: 'test')
+      requester = User.create(email: 'test1@example.com', password: 'test1')
+
+      space = Space.create(
+        name: "Test Name",
+        description: "Test description",
+        date_available_from: "2021-01-01",
+        date_available_to: "2021-01-02",
+        price: "50",
+        user_id: owner.id)
+
+      Space.create(
+        name: "Lovely space",
+        description: "Lovely description",
+        date_available_from: "2021-03-03",
+        date_available_to: "2021-01-04",
+        price: "70",
+        user_id: requester.id)
+
+      Space.create(
+        name: "Another Lovely space",
+        description: "Anothr Lovely description",
+        date_available_from: "2021-04-04",
+        date_available_to: "2021-05-04",
+        price: "170",
+        user_id: requester.id)
+
+      request = Request.create(user_id: requester.id, requested_date: '2021-03-03', space_id: space.id)
+
+      persisted_data = persisted_data_retrieve(table: 'requests', id: request.id)
+
+      requests = Request.all_made
+
+      expect(requests.length).to eq(2)
+      expect(requests.first).to be_a(Request)
+      expect(requests.first.id).to eq(request.id)
+      expect(request.requested_date).to eq('2021-03-03')
+    end
+  end
+
 end

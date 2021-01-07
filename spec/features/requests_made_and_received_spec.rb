@@ -11,7 +11,7 @@ feature "As a user, So I know the status of my requests, I would like to be able
     click_button('Confirm')
     expect(current_path).to eq '/spaces'
 
-    click_button('Spaces')
+    click_link('Requests')
     expect(page).to have_content("Requests I've made")
     expect(page).to have_content("Requests I've received")
     expect(current_path).to eq '/requests'
