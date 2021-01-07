@@ -59,6 +59,7 @@ class MakersBnB < Sinatra::Base
 
   get '/requests' do
     @requests_made = Request.all_made(user_id: session[:user_id])
+    @requests_received = Request.all_received(user_id: session[:user_id])
     erb :'requests/index'
   end
 
