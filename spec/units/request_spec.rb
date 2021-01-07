@@ -16,12 +16,13 @@ describe Request do
 
       requester = User.create(email: 'user@example.com', password: 'user')
 
-      request = Request.create(user_id: requester.id, date: '2021-01-15', space_id: space.id)
-      persisted_data = persisted_data_retrieve(table: requests, id: request.id)
+      request = Request.create(user_id: requester.id, requested_date: '2021-01-15', space_id: space.id)
+      persisted_data = persisted_data_retrieve(table: 'requests', id: request.id)
 
       expect(request).to be_a Request
-      expect(request.date).to eq '2021-01-15'
+      expect(request.requested_date).to eq '2021-01-15'
       expect(request.id).to eq persisted_data['id']
+      expect(request.status).to eq('requested')
     end
   end
 end

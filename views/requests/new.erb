@@ -8,7 +8,7 @@
 <body>
   <h1><%=@space.name%></h1>
   <form action='/bookings/<%= @space.id %>' method='post'>
-  <input type="date" min="<%= @space.date_available_from %>" max="<%= @space.date_available_to %>" name="date">
+  <input type="date" min="<%= @space.date_available_from %>" max="<%= @space.date_available_to %>" name="requested_date">
   <input type="submit" value='Make a request'>
   </form>
 </body>
