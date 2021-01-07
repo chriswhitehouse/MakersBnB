@@ -9,6 +9,6 @@ feature "As a user, so I can make changes to my bookings/listings, I would like 
     fill_in('email', with: 'test@example.com')
     fill_in('password', with: 'fakepassword123')
     click_button('Confirm')
-    # expect(current_path).to eq '/sessions'
+    expect(current_path).to eq '/sessions'
   end
 end
