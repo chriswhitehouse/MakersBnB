@@ -2,7 +2,7 @@ require 'request'
 
 feature 'So I can approve a request' do
   scenario 'I would like to be able to confirm requests on my space' do
-    owner = User.create(email: 'owner@example.com', password: 'test')
+    owner = User.create(email: 'owner@example.com', password: 'test', username: 'test_user')
 
     space = Space.create(
       name: "Test name",
@@ -13,7 +13,7 @@ feature 'So I can approve a request' do
       user_id: owner.id
       )
 
-    requester = User.create(email: 'requester@example.com', password: 'test')
+    requester = User.create(email: 'requester@example.com', password: 'test', username: 'test_user')
 
     request = Request.create(user_id: requester.id, requested_date: '2021-01-15', space_id: space.id)
 
@@ -28,7 +28,7 @@ feature 'So I can approve a request' do
   end
 
   scenario 'I would like to be able to deny requests on my space' do
-    owner = User.create(email: 'owner@example.com', password: 'test')
+    owner = User.create(email: 'owner@example.com', password: 'test', username: 'test_user')
 
     space = Space.create(
       name: "Test name",
@@ -39,7 +39,7 @@ feature 'So I can approve a request' do
       user_id: owner.id
       )
 
-    requester = User.create(email: 'requester@example.com', password: 'test')
+    requester = User.create(email: 'requester@example.com', password: 'test', username: 'test_user')
 
     request = Request.create(user_id: requester.id, requested_date: '2021-01-15', space_id: space.id)
 

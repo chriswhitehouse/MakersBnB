@@ -28,7 +28,7 @@ describe Request do
 
   describe '.find' do
     it 'Should return the request' do
-      owner = User.create(email: 'test@example.com', password: 'test')
+      owner = User.create(email: 'test@example.com', password: 'test', username: 'testuser2')
 
       space = Space.create(
         name: "Test name",
@@ -39,7 +39,7 @@ describe Request do
         user_id: owner.id
         )
 
-      requester = User.create(email: 'user@example.com', password: 'user')
+      requester = User.create(email: 'user@example.com', password: 'user', username: 'testuser2')
 
       request = Request.create(user_id: requester.id, requested_date: '2021-01-15', space_id: space.id)
       persisted_data = persisted_data_retrieve(table: 'requests', id: request.id)
@@ -55,7 +55,7 @@ describe Request do
 
   describe '.update_status' do
     it 'Should update the status' do
-      owner = User.create(email: 'test@example.com', password: 'test')
+      owner = User.create(email: 'test@example.com', password: 'test', username: 'testuser2')
 
       space = Space.create(
         name: "Test name",
@@ -66,7 +66,7 @@ describe Request do
         user_id: owner.id
         )
 
-      requester = User.create(email: 'user@example.com', password: 'user')
+      requester = User.create(email: 'user@example.com', password: 'user', username: 'testuser2')
 
       request = Request.create(user_id: requester.id, requested_date: '2021-01-15', space_id: space.id)
       persisted_data = persisted_data_retrieve(table: 'requests', id: request.id)

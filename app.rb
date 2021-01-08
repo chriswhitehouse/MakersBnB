@@ -69,11 +69,13 @@ class MakersBnB < Sinatra::Base
     @space = Space.find(id: @rqst.space_id)
     @user = User.find(id: @rqst.user_id)
     erb :'requests/edit'
+  end
 
   get '/requests' do
     @requests_made = Request.all_made(user_id: session[:user_id])
     @requests_received = Request.all_received(user_id: session[:user_id])
     erb :'requests/index'
+  end
 
   get '/sessions/new' do
     erb :'sessions/new'
