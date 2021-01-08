@@ -7,15 +7,10 @@
   <link rel="stylesheet" href="<%= url("/styles.css")%>"> 
 </head>
 <body>
-<a href='/spaces'>Spaces</a>
-<a href='/requests'>Requests</a>
 <h1>Book A Space</h1>
   <div class="welcome_user"
   <% if @user %>
   <h3>Welcome, <%= @user.username %></h3>
-  <form action="/sessions/destroy" method="post">
-    <input class="sign_out" type="submit" value="Sign out" />
-  </form>
   <% end %>
   </div>
 

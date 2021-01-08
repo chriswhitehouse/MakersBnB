@@ -4,9 +4,20 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="<%= url("/styles.css")%>">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
     <title>MakersBnB</title>
   </head>
   <body>
+  <nav>
+  <form action="/sessions/destroy" method="post">
+    <input class="sign_out" type="submit" value="Sign out" />
+  </form>
+  <a href="/spaces"><i class="fas fa-home fa-3x"></i></a>
+  </nav>
+  <div class='menu'>
+  <a href='/spaces'>Spaces</a> | <a href='/requests'>Requests</a>
+  </div>
   <%= flash[:notice] %>
   <%= yield %>
   </body>
