@@ -1,4 +1,21 @@
 body {
-  background-color: #6495ED;
+  background-color: #6495ed;
+}
 
+div.menu {
+  position: absolute;
+  right: 80px;
+  top: 50px;
+}
+
+input.sign_out {
+  position: absolute;
+  right: 80px;
+  top: 10px;
+}
+
+input.sign_in {
+  position: absolute;
+  right: 150px;
+  top: 10px;
 }
