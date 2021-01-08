@@ -2,12 +2,13 @@ require 'bcrypt'
 
 class User
 
-  def self.create(email:, password:)
+  def self.create(email:, password:, username:)
     encrypted_password = BCrypt::Password.create(password)
-    result = DatabaseConnection.query("INSERT INTO users (email, password) VALUES ('#{email}', '#{encrypted_password}') RETURNING id, email;").first
+    result = DatabaseConnection.query("INSERT INTO users (email, password, username) VALUES ('#{email}', '#{encrypted_password}', '#{username}') RETURNING id, email, username;").first
     User.new(
       id: result['id'],
-      email: result['email'])
+      email: result['email'],
+      username: result['username'])
   end
 
   def self.find(id:)
@@ -15,7 +16,8 @@ class User
     result = DatabaseConnection.query("SELECT * FROM users WHERE id = #{id}")
     User.new(
       id: result[0]['id'],
-      email: result[0]['email'])
+      email: result[0]['email'],
+      username: result[0]['username'])
   end
 
   def self.authenticate(email:, password:)
@@ -24,14 +26,16 @@ class User
     return unless BCrypt::Password.new(result[0]['password']) == password
     User.new(
       id: result[0]['id'],
-      email: result[0]['email'])
+      email: result[0]['email'],
+      username: result[0]['username'])
   end
 
-  attr_reader :id, :email
+  attr_reader :id, :email, :username
 
-  def initialize(id:, email:)
+  def initialize(id:, email:, username:)
     @id = id
     @email = email
+    @username = username
   end
 
 end

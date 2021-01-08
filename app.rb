@@ -3,6 +3,7 @@ require "sinatra/base"
 require "./database_connection_setup"
 require 'bcrypt'
 require_relative './lib/space'
+require_relative './lib/request'
 require_relative './session_helper'
 
 
@@ -42,7 +43,7 @@ class MakersBnB < Sinatra::Base
   end
 
   post "/users" do
-    user = User.create(email: params[:email],password: params[:password])
+    user = User.create(email: params[:email],password: params[:password], username: params[:username])
     session[:user_id] = user.id
     redirect('/spaces')
   end
@@ -57,6 +58,7 @@ class MakersBnB < Sinatra::Base
     redirect('/spaces')
   end
 
+
   patch "/requests/:id" do
     Request.update_status(id: params[:id], status: params[:status])
     redirect('/spaces')
@@ -67,7 +69,11 @@ class MakersBnB < Sinatra::Base
     @space = Space.find(id: @rqst.space_id)
     @user = User.find(id: @rqst.user_id)
     erb :'requests/edit'
-  end
+
+  get '/requests' do
+    @requests_made = Request.all_made(user_id: session[:user_id])
+    @requests_received = Request.all_received(user_id: session[:user_id])
+    erb :'requests/index'
 
   get '/sessions/new' do
     erb :'sessions/new'

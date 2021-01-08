@@ -1,7 +1,7 @@
 feature "So i can choose a space" do
   scenario "I would like to see a list of spaces" do
-    user = User.create(email: 'test@example.com', password: 'test')
-    
+    user = User.create(email: 'test@example.com', password: 'test', username: 'testuser')
+
     Space.create(
       name: "Test name",
       description: "Test description",

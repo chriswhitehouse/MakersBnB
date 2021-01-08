@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Requests</title>
+</head>
+<body>
+  <div class='request-container'>
+    <h3>Requests I've made</h3>
+    <ul>
+      <% @requests_made.each do |request| %>
+      <li class="request_made" id="request-<%=request.id %>">
+        <%= request.status %><br>
+        <%= request.requested_date %><br>
+        <%= request.space_info.name %><br>
+        <%= request.space_info.description %><br>
+        <%= request.space_info.price %><br>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class='received-container'>
+    <h3>Requests I've received</h3>
+    <ul>
+      <% @requests_received.each do |request| %>
+      <li class="request_rec" id="request-<%=request.id %>">
+        <%= request.status %><br>
+        <%= request.requested_date %><br>
+        <%= request.space_info.name %><br>
+        <%= request.space_info.description %><br>
+        <%= request.space_info.price %><br>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+</body>
+</html>
