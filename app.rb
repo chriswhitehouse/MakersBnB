@@ -8,7 +8,8 @@ require_relative './session_helper'
 
 
 class MakersBnB < Sinatra::Base
-  enable :sessions
+  enable :sessions, :method_override
+
   register Sinatra::Flash
   include SessionHelper
 
@@ -57,11 +58,22 @@ class MakersBnB < Sinatra::Base
     redirect('/spaces')
   end
 
+
+  patch "/requests/:id" do
+    Request.update_status(id: params[:id], status: params[:status])
+    redirect('/spaces')
+  end
+
+  get "/requests/:id" do
+    @rqst = Request.find(id: params[:id])
+    @space = Space.find(id: @rqst.space_id)
+    @user = User.find(id: @rqst.user_id)
+    erb :'requests/edit'
+
   get '/requests' do
     @requests_made = Request.all_made(user_id: session[:user_id])
     @requests_received = Request.all_received(user_id: session[:user_id])
     erb :'requests/index'
-  end
 
   get '/sessions/new' do
     erb :'sessions/new'
