@@ -61,7 +61,7 @@ class MakersBnB < Sinatra::Base
 
   patch "/requests/:id" do
     Request.update_status(id: params[:id], status: params[:status])
-    redirect('/spaces')
+    redirect('/requests')
   end
 
   get "/requests/:id" do

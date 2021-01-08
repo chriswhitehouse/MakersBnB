@@ -2,6 +2,8 @@ require 'request'
 
 feature 'So I can approve a request' do
   scenario 'I would like to be able to confirm requests on my space' do
+    sign_up
+
     owner = User.create(email: 'owner@example.com', password: 'test', username: 'test_user')
 
     space = Space.create(
@@ -24,10 +26,12 @@ feature 'So I can approve a request' do
     expect(page).to have_content "From: #{requester.email}"
     expect(page).to have_content "Date: #{request.requested_date}"
     click_button("Confirm request from #{requester.email}")
-    expect(current_path).to eq '/spaces'
+    expect(current_path).to eq '/requests'
   end
 
   scenario 'I would like to be able to deny requests on my space' do
+    sign_up
+
     owner = User.create(email: 'owner@example.com', password: 'test', username: 'test_user')
 
     space = Space.create(
@@ -50,7 +54,7 @@ feature 'So I can approve a request' do
     expect(page).to have_content "From: #{requester.email}"
     expect(page).to have_content "Date: #{request.requested_date}"
     click_button("Deny request from #{requester.email}")
-    expect(current_path).to eq '/spaces'
+    expect(current_path).to eq '/requests'
 
   end
 end
