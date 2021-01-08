@@ -3,7 +3,7 @@ require 'request'
 describe Request do
   describe '.create' do
     it 'should record a request in requests table and return a request instance' do
-      owner = User.create(email: 'test@example.com', password: 'test')
+      owner = User.create(email: 'test@example.com', password: 'test', username: 'testuser1')
 
       space = Space.create(
         name: "Test name",
@@ -14,7 +14,7 @@ describe Request do
         user_id: owner.id
         )
 
-      requester = User.create(email: 'user@example.com', password: 'user')
+      requester = User.create(email: 'user@example.com', password: 'user', username: 'testuser2')
 
       request = Request.create(user_id: requester.id, requested_date: '2021-01-15', space_id: space.id)
       persisted_data = persisted_data_retrieve(table: 'requests', id: request.id)
@@ -28,8 +28,8 @@ describe Request do
 
   describe '.all_made' do
     it 'should show all requests made' do
-      owner = User.create(email: 'test@example.com', password: 'test')
-      requester = User.create(email: 'test1@example.com', password: 'test1')
+      owner = User.create(email: 'test@example.com', password: 'test', username: 'testuser1')
+      requester = User.create(email: 'test1@example.com', password: 'test1', username: 'testuser2')
 
       space = Space.create(
         name: "Test Name",

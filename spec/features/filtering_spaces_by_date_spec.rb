@@ -1,7 +1,7 @@
 feature 'So i can see spaces in a specified date range' do
   scenario 'I would like to be able to filter the list by date of availibility' do
-    user = User.create(email: 'test@example.com', password: 'test')
-    
+    user = User.create(email: 'test@example.com', password: 'test', username: 'testuser')
+
     Space.create(
       name: "Test name",
       description: "Test description",
