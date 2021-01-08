@@ -13,17 +13,9 @@
       <li class="request_made" id="request-<%=request.id %>">
         <%= request.status %><br>
         <%= request.requested_date %><br>
-        <ul>
-          <% request.space_info.each do |space| %>
-          <li><%= space.name %></li>
-          <li><%= space.description %></li>
-          <li><%= space.price %></li>
-          <% end %>
-        </li>
-      <li>
-      Space 2
-      <li>
-      Space 1
+        <%= request.space_info.name %><br>
+        <%= request.space_info.description %><br>
+        <%= request.space_info.price %><br>
       </li>
       <% end %>
     </ul>
@@ -32,17 +24,12 @@
     <h3>Requests I've received</h3>
     <ul>
       <% @requests_received.each do |request| %>
-      <li class="request_made" id="request-<%=request.id %>">
+      <li class="request_rec" id="request-<%=request.id %>">
         <%= request.status %><br>
         <%= request.requested_date %><br>
-        <ul>
-          <% request.space_info.each do |space| %>
-          <li><%= space.name %></li>
-          <li><%= space.description %></li>
-          <li><%= space.price %></li>
-          <% end %>
-          <li>
-      Space 1
+        <%= request.space_info.name %><br>
+        <%= request.space_info.description %><br>
+        <%= request.space_info.price %><br>
       </li>
       <% end %>
     </ul>
