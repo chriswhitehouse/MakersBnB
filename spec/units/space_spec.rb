@@ -5,7 +5,7 @@ describe Space do
 
   describe '.create' do
     it 'creates a new space' do
-      user = User.create(email: 'test@example.com', password: 'test')
+      user = User.create(email: 'test@example.com', password: 'test', username: 'testuser')
 
       space = Space.create(
         name: "Test name",
@@ -37,7 +37,7 @@ describe Space do
 
   describe '.all' do
     it 'returns all listed spaces' do
-      user = User.create(email: 'test@example.com', password: 'test')
+      user = User.create(email: 'test@example.com', password: 'test', username: 'testuser')
 
       space = Space.create(
         name: "Test Name",
@@ -77,7 +77,7 @@ describe Space do
 
   describe ".filter" do
     it "should only list spaces available within required date range" do
-      user = User.create(email: 'test@example.com', password: 'test')
+      user = User.create(email: 'test@example.com', password: 'test', username: 'testuser')
       Space.create(
         name: "Test name",
         description: "Test description",
@@ -104,7 +104,7 @@ describe Space do
   describe '.find' do
     it 'returns the space' do
 
-      user = User.create(email: 'test@example.com', password: 'test')
+      user = User.create(email: 'test@example.com', password: 'test', username: 'testuser')
 
       space = Space.create(name: "Test name",
         description: "Test description",

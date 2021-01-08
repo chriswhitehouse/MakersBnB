@@ -5,7 +5,7 @@ describe User do
 
   describe '.create' do
     it 'Inserts a new user into the user table and returns a user object' do
-      result = User.create(email: 'test@example.com', password: 'test')
+      result = User.create(email: 'test@example.com', password: 'test', username: 'testuser')
 
       persisted_data = persisted_data_retrieve(table: 'users', id: result.id)
 
@@ -17,13 +17,13 @@ describe User do
     it 'It hashes the password using bcrypt' do
       expect(BCrypt::Password).to receive(:create).with('test')
 
-      User.create(email: 'test@example.com', password: 'test')
+      User.create(email: 'test@example.com', password: 'test', username: 'testuser')
     end
   end
 
   describe '.find' do
     it 'returns the user' do
-      user = User.create(email: 'test@example.com', password: 'test')
+      user = User.create(email: 'test@example.com', password: 'test', username: 'testuser')
 
       result = User.find(id: user.id)
       expect(result.id).to eq user.id
@@ -36,20 +36,20 @@ describe User do
 
   describe '.authenticate' do
     it 'returns a user given a correct username and password, if one exists' do
-      user = User.create(email: 'test@example.com', password: 'password123')
+      user = User.create(email: 'test@example.com', password: 'password123', username: 'testuser')
       authenticated_user = User.authenticate(email: 'test@example.com', password: 'password123')
 
       expect(authenticated_user.id).to eq user.id
     end
 
     it 'returns nil given an incorrect email address' do
-      user = User.create(email: 'test@example.com', password: 'password123')
+      user = User.create(email: 'test@example.com', password: 'password123', username: 'testuser')
 
       expect(User.authenticate(email: 'nottherightemail@me.com', password: 'password123')).to be_nil
     end
 
     it 'returns nil given an incorrect password' do
-      user = User.create(email: 'test@example.com', password: 'password123')
+      user = User.create(email: 'test@example.com', password: 'password123', username: 'testuser')
 
       expect(User.authenticate(email: 'test@example.com', password: 'wrongpassword')).to be_nil
     end

@@ -1,6 +1,6 @@
 feature "As a user, So I know the status of my requests, I would like to be able to see a list of requests I have made and received" do
   scenario "After logging in as a user I can see requests I've made and received" do
-    User.create(email: 'test@example.com', password: 'test')
+    User.create(email: 'test@example.com', password: 'test', username: 'testuser')
 
     visit('/')
     click_button('Sign in')

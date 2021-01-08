@@ -1,6 +1,6 @@
 feature 'As a user So that i can rent an owners space I would like to be able to request an owners space for one night' do
   scenario 'user makes a single request' do
-    user = User.create(email: 'test@example.com', password: 'test')
+    user = User.create(email: 'test@example.com', password: 'test', username: 'testuser')
 
     space = Space.create(
       name: "Lovely space",
