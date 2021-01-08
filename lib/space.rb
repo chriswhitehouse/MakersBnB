@@ -61,19 +61,17 @@ class Space
 
   end
 
-  # needs test 
+  # needs test
   def self.where(id:)
-    result = DatabaseConnection.query("SELECT * FROM spaces WHERE id = #{id};")
-    result.map do |space|
-      Space.new(
-        id: space['id'],
-        name: space['name'],
-        description: space['description'],
-        date_available_from: space['date_available_from'],
-        date_available_to: space['date_available_to'],
-        price: space['price'],
-        user_id: space['owner_id'])
-      end
+    space = DatabaseConnection.query("SELECT * FROM spaces WHERE id = #{id};")
+    Space.new(
+      id: space[0]['id'],
+      name: space[0]['name'],
+      description: space[0]['description'],
+      date_available_from: space[0]['date_available_from'],
+      date_available_to: space[0]['date_available_to'],
+      price: space[0]['price'],
+      user_id: space[0]['owner_id'])
   end
 
   def initialize(id:, name:, description:, price:, date_available_from:, date_available_to:, user_id:)
