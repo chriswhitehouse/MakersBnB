@@ -24,6 +24,27 @@ describe Request do
       expect(request.id).to eq persisted_data['id']
       expect(request.status).to eq('requested')
     end
+
+    it 'should not allow me to request a date on a space that has already been confrimed' do
+      owner = User.create(email: 'owner@example.com', password: 'test', username: 'test_user')
+
+      space = Space.create(
+        name: "Test name",
+        description: "Test description",
+        date_available_from: "2021-02-02",
+        date_available_to: "2021-02-20",
+        price: "50",
+        user_id: owner.id
+        )
+
+      requester = User.create(email: 'requester@example.com', password: 'test', username: 'test_user')
+
+      first_request = Request.create(user_id: requester.id, requested_date: '2021-01-15', space_id: space.id)
+      Request.update_status(id: first_request.id, status: 'confrimed')
+
+      second_request = Request.create(user_id: requester.id, requested_date: '2021-01-15', space_id: space.id)
+      expect(second_request).to be nil
+    end
   end
 
   describe '.find' do

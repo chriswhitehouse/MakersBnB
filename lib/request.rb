@@ -5,8 +5,8 @@ class Request
   attr_reader :id, :user_id, :requested_date, :space_id, :status
 
   def self.create(user_id:, requested_date: , space_id:, status:'requested')
-    # result = DatabaseConnection.query("SELECT * FROM requests WHERE requested_date = #{requested_date} AND space_id = #{space_id};")
-    # return unless !result.any?
+    check = DatabaseConnection.query("SELECT * FROM requests WHERE requested_date = '#{requested_date}' AND space_id = #{space_id};")
+    return nil if check.any?
     result = DatabaseConnection.query("INSERT INTO requests (requester_id, requested_date, space_id, status ) VALUES('#{user_id}', '#{requested_date}', '#{space_id}','#{status}') RETURNING id, requester_id, requested_date, space_id, status")
 
     Request.new(

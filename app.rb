@@ -54,8 +54,13 @@ class MakersBnB < Sinatra::Base
   end
 
   post "/requests/:id" do
-    Request.create(user_id: session[:user_id], requested_date: params[:requested_date], space_id: params[:id])
-    redirect('/spaces')
+    result = Request.create(user_id: session[:user_id], requested_date: params[:requested_date], space_id: params[:id])
+    if result
+      redirect '/spaces'
+    else
+      flash[:notice] = 'Space already booked for that date'
+      redirect "/spaces/#{params[:id]}"
+    end
   end
 
 
