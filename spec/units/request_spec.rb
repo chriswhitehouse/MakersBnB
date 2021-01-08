@@ -40,7 +40,7 @@ describe Request do
       requester = User.create(email: 'requester@example.com', password: 'test', username: 'test_user')
 
       first_request = Request.create(user_id: requester.id, requested_date: '2021-01-15', space_id: space.id)
-      Request.update_status(id: first_request.id, status: 'confrimed')
+      Request.update_status(id: first_request.id, status: 'confirmed')
 
       second_request = Request.create(user_id: requester.id, requested_date: '2021-01-15', space_id: space.id)
       expect(second_request).to be nil

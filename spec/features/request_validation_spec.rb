@@ -14,7 +14,7 @@ feature "So spaces don't get double booked" do
     requester = User.create(email: 'requester@example.com', password: 'test', username: 'test_user')
 
     request = Request.create(user_id: requester.id, requested_date: '2021-01-15', space_id: space.id)
-    Request.update_status(id: request.id, status: 'confrimed')
+    Request.update_status(id: request.id, status: 'confirmed')
 
 
     sign_up
