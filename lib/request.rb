@@ -64,7 +64,7 @@ class Request
 
     result.map do |request|
       Request.new(
-        id: request['requests.id'],
+        id: request['id'],
         user_id: request['requester_id'],
         requested_date: request['requested_date'],
         space_id: request['space_id'],
