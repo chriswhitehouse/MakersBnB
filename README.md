@@ -9,6 +9,12 @@ MakersBnB is a webapp that allows users to list spaces they have available and t
 ## Code style
 [![Ruby Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://github.com/testdouble/standard)
 
+## Screenshots
+[![Sign Up](https://github.com/chriswhitehouse/MakersBnB/blob/master/screenshots/Screenshot%202021-01-19%20at%2018.44.30.png)
+[![Book a Space](https://github.com/chriswhitehouse/MakersBnB/blob/master/screenshots/Screenshot%202021-01-19%20at%2018.45.59.png)
+[![Make a Request](https://github.com/chriswhitehouse/MakersBnB/blob/master/screenshots/Screenshot%202021-01-19%20at%2018.46.23.png)
+[![Requests](https://github.com/chriswhitehouse/MakersBnB/blob/master/screenshots/Screenshot%202021-01-19%20at%2018.46.42.png)
+
 ## User Stories
 Any signed-up user can list a new space.
 ```
